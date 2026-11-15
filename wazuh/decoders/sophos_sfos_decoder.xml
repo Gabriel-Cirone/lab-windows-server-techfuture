@@ -1,0 +1,55 @@
+<!--
+  Sophos Firewall (SFOS) key="value" syslog decoder for Wazuh.
+  Tested with Wazuh 4.14.9 and Sophos Firewall Home Edition (device_model="SFVH").
+
+  The prematch expects the firewall hostname to be "Sophos".
+  If yours differs, change device_name="Sophos" below to match.
+
+  Install path: /var/ossec/etc/decoders/sophos_sfos_decoder.xml
+-->
+
+<decoder name="sophos-sfos">
+  <prematch>device_name="Sophos" timestamp=</prematch>
+</decoder>
+
+<decoder name="sophos-sfos">
+  <parent>sophos-sfos</parent>
+  <regex type="pcre2">log_subtype="([^"]*)"</regex>
+  <order>action</order>
+</decoder>
+
+<decoder name="sophos-sfos">
+  <parent>sophos-sfos</parent>
+  <regex type="pcre2">fw_rule_name="([^"]*)"</regex>
+  <order>fw_rule_name</order>
+</decoder>
+
+<decoder name="sophos-sfos">
+  <parent>sophos-sfos</parent>
+  <regex type="pcre2">src_ip="([^"]*)"</regex>
+  <order>srcip</order>
+</decoder>
+
+<decoder name="sophos-sfos">
+  <parent>sophos-sfos</parent>
+  <regex type="pcre2">dst_ip="([^"]*)"</regex>
+  <order>dstip</order>
+</decoder>
+
+<decoder name="sophos-sfos">
+  <parent>sophos-sfos</parent>
+  <regex type="pcre2">dst_port=(\d+)</regex>
+  <order>dstport</order>
+</decoder>
+
+<decoder name="sophos-sfos">
+  <parent>sophos-sfos</parent>
+  <regex type="pcre2">src_zone="([^"]*)"</regex>
+  <order>src_zone</order>
+</decoder>
+
+<decoder name="sophos-sfos">
+  <parent>sophos-sfos</parent>
+  <regex type="pcre2">dst_zone="([^"]*)"</regex>
+  <order>dst_zone</order>
+</decoder>

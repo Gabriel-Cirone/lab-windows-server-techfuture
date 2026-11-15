@@ -1,0 +1,23 @@
+<!--
+  Rules for the sophos-sfos decoder.
+  Custom rule IDs use the 100000-120000 range reserved for local rules.
+
+  Install path: /var/ossec/etc/rules/sophos_sfos_rules.xml
+-->
+
+<group name="sophos,firewall,">
+
+  <!-- Every connection Sophos logs. Level 3 keeps it out of the way; raise it if you want it on the main alert views. -->
+  <rule id="100100" level="3">
+    <decoded_as>sophos-sfos</decoded_as>
+    <description>Sophos Firewall: connection $(action) from $(srcip) to $(dstip):$(dstport)</description>
+  </rule>
+
+  <!-- Connections the firewall blocked. -->
+  <rule id="100101" level="7">
+    <if_sid>100100</if_sid>
+    <action>Denied</action>
+    <description>Sophos Firewall: connection blocked from $(srcip) to $(dstip):$(dstport)</description>
+  </rule>
+
+</group>
