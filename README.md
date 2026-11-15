@@ -140,6 +140,7 @@ These were the most instructive part of the project. The full list is in [`docs/
 ```
 .
 ├── README.md
+├── LICENSE
 ├── docs/
 │   ├── paper-pt-BR.pdf        # IEEE-format paper (Portuguese)
 │   ├── sophos-firewall.md     # web console configuration, step by step
@@ -166,3 +167,7 @@ Next steps would be a second domain controller with DHCP failover, DFS replicati
 Gabriel Cirone Galter · Fernando Giuseppe Avila Beltramo · Matheus de Alencar Castro · Maick Rosario Yamassaki
 
 Advisor: Prof. Eduardo R. S. Popovici, FIAP
+
+## License
+
+[MIT](LICENSE)
